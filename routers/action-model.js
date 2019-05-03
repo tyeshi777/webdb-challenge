@@ -7,18 +7,18 @@ module.exports = {
 };
 
 function find() {
-  return db("project");
+  return db("action");
 }
 
 function findById(id) {
-  return db("project")
+  return db("action")
     .where({ id })
     .first();
 }
 
-function add(project) {
-  return db("project")
-    .insert(project, "id")
+function add(action) {
+  return db("action")
+    .insert(action, "id")
     .then(([id]) => {
       return findById(id);
     });

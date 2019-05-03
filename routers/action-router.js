@@ -1,25 +1,25 @@
 const router = require("express").Router();
 
-const Project = require("./project-model.js");
+const Action = require("./action-model.js");
 
 router.get("/", (req, res) => {
-  Project.find()
-    .then(project => {
-      res.status(200).json(project);
+  Action.find()
+    .then(action => {
+      res.status(200).json(action);
     })
     .catch(error => {
       res
         .status(500)
-        .json({ message: "We ran into an error retrieving the projects" });
+        .json({ message: "We ran into an error retrieving the Actions" });
     });
 });
 
 router.post("/", async (req, res) => {
-  const project = req.body;
+  const action = req.body;
 
-  if (project) {
+  if (action) {
     try {
-      const inserted = await Project.add(project);
+      const inserted = await Action.add(action);
       res.status(201).json(inserted);
     } catch (error) {
       res.status(500).json({ message: "cannot add" });
