@@ -6,7 +6,13 @@ exports.up = function(knex, Promise) {
       .string("name", 128)
       .notNullable()
       .unique();
+
+    tbl.string("description", 255).notNullable();
+
+    tbl.string("completed").notNullable();
   });
 };
 
-exports.down = function(knex, Promise) {};
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTableIfExists("project");
+};

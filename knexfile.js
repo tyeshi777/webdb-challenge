@@ -4,6 +4,7 @@ module.exports = {
   development: {
     client: "sqlite3",
     useNullAsDefault: true,
+    debug: true,
     connection: {
       filename: "./data/dev.sqlite3"
     },
@@ -15,7 +16,7 @@ module.exports = {
     },
     pool: {
       afterCreate: (connection, done) => {
-        connection.done("PRAGMA foreign_keys = ON", done);
+        connection.run("PRAGMA foreign_keys = ON", done);
       }
     }
   }
